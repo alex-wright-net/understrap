@@ -16,6 +16,6 @@
 
 	$ git remote add understrap git@github.com:alex-wright-net/understrap.git
 
-	$ git subtree add --prefix=wp-content/themes/xxcustom-themexx/ understrap-child dev
+	$ git subtree add --prefix=wp-content/themes/understrap/ understrap dev
 
 7) Install understrap-child
