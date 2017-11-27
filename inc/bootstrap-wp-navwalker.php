@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if (! class_exists ( 'understrap_WP_Bootstrap_Navwalker' )) :
+
 /**
  * Class WP_Bootstrap_Navwalker
  * GitHub URI: https://github.com/twittem/wp-bootstrap-navwalker
@@ -21,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
-class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
+class understrap_WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 	/**
 	 * The starting level of the menu.
 	 *
@@ -99,7 +101,7 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 			$id          = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 			$output .= $indent . '<li' . $id . $value . $class_names . '>';
 			$atts           = array();
-			$atts['title']  = ! empty( $item->title ) ? $item->title : '';
+			if ( empty( $item->attr_title ) ) { $atts['title'] = ! empty( $item->title ) ? strip_tags( $item->title ) : ''; } else { $atts['title'] = $item->attr_title; }
 			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
 			$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
 			// If item has_children add atts to a.
@@ -210,3 +212,5 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 		}
 	}
 }
+
+endif; /* End if class exists */
