@@ -254,9 +254,13 @@ gulp.task('copy-assets', ['clean-source'], function() {
     gulp.src(basePaths.node + 'undescores-for-npm/sass/**/*.scss')
         .pipe(gulp.dest(basePaths.dev + '/sass/underscores'));
 
-// _s JS files
+// _s JS files into /src/js
     gulp.src(basePaths.node + 'undescores-for-npm/js/*.js')
         .pipe(gulp.dest(basePaths.dev + '/js'));
+
+// _s JS files into /js
+    gulp.src(basePaths.node + 'undescores-for-npm/js/*.js')
+        .pipe(gulp.dest(basePaths.js));
 
 // Copy Popper JS files
     gulp.src(basePaths.node + 'popper.js/dist/umd/popper.min.js')
@@ -267,7 +271,6 @@ gulp.task('copy-assets', ['clean-source'], function() {
     return stream;
 });
 
-
 // Run
 // gulp dist
 // Copies the files to the /dist folder for distribution as simple theme
@@ -276,7 +279,7 @@ gulp.task('dist', ['clean-dist'], function() {
     .pipe(gulp.dest('dist/'))
 });
 
-// Deleting any file inside the /src folder
+// Deleting any file inside the /dist folder
 gulp.task('clean-dist', function () {
   return del(['dist/**/*',]);
 });
@@ -289,7 +292,7 @@ gulp.task('dist-product', ['clean-dist-product'], function() {
     .pipe(gulp.dest('dist-product/'))
 });
 
-// Deleting any file inside the /src folder
+// Deleting any file inside the /dist-product folder
 gulp.task('clean-dist-product', function () {
   return del(['dist-product/**/*',]);
 });
