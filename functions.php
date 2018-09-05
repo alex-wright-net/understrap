@@ -36,6 +36,11 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/pagination.php';
 
 /**
+ * Custom hooks.
+ */
+require get_template_directory() . '/inc/hooks.php';
+
+/**
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
@@ -58,7 +63,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Load custom WordPress nav walker.
  */
-require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';
+require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 
 /**
  * Load WooCommerce functions.
